@@ -108,6 +108,7 @@ public class TypeAliasRegistry {
         return null;
       }
       // issue #748
+      // 变成小写，以类名小写字母为key
       String key = string.toLowerCase(Locale.ENGLISH);
       Class<T> value;
       if (typeAliases.containsKey(key)) {

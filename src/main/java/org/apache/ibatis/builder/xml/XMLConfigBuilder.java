@@ -107,8 +107,11 @@ public class XMLConfigBuilder extends BaseBuilder {
   private void parseConfiguration(XNode root) {
     try {
       //issue #117 read properties first
+      // 解析properties 配置
       propertiesElement(root.evalNode("properties"));
+      // 解析settings配置
       Properties settings = settingsAsProperties(root.evalNode("settings"));
+
       loadCustomVfs(settings);
       loadCustomLogImpl(settings);
       typeAliasesElement(root.evalNode("typeAliases"));
@@ -362,6 +365,7 @@ public class XMLConfigBuilder extends BaseBuilder {
     }
   }
 
+  // 解析mapper 配置
   private void mapperElement(XNode parent) throws Exception {
     if (parent != null) {
       for (XNode child : parent.getChildren()) {
