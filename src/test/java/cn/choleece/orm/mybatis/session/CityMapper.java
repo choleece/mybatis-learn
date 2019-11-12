@@ -1,6 +1,7 @@
 package cn.choleece.orm.mybatis.session;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -13,4 +14,7 @@ public interface CityMapper {
 
   @Select("select * from city")
   List<City> selectList();
+
+  @Update("update city set name = '北京市' where name = '孝感市'")
+  int update();
 }

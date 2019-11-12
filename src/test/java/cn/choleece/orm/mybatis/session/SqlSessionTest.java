@@ -26,6 +26,9 @@ class SqlSessionTest {
   void sql() {
     SqlSession session = sqlSessionFactory.openSession();
 
+    int count = session.update("update");
+    System.out.println(count);
+
     CityMapper cityMapper = session.getMapper(CityMapper.class);
 
     List<City> cities = cityMapper.selectList();
