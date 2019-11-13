@@ -101,7 +101,7 @@ public class XMLConfigBuilder extends BaseBuilder {
   }
 
   /**
-   * 解析configuration 下的内容
+   * 解析configuration 下的内容， 加载正规配置文件，将配置的内容放到 configuration实例里
    * @param root
    */
   private void parseConfiguration(XNode root) {
