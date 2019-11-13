@@ -114,7 +114,10 @@ public class XMLConfigBuilder extends BaseBuilder {
 
       loadCustomVfs(settings);
       loadCustomLogImpl(settings);
+
+      // typeAliases主要做类型转换，别名等，一个全限定类名用一个别名代替
       typeAliasesElement(root.evalNode("typeAliases"));
+
       pluginElement(root.evalNode("plugins"));
       objectFactoryElement(root.evalNode("objectFactory"));
       objectWrapperFactoryElement(root.evalNode("objectWrapperFactory"));

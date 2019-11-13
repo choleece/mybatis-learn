@@ -42,6 +42,8 @@ import org.xml.sax.SAXParseException;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ *
+ * 将文件里的xml配置读取到Document中
  */
 public class XPathParser {
 
