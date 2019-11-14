@@ -32,6 +32,8 @@ class SqlSessionTest {
     CityMapper cityMapper = session.getMapper(CityMapper.class);
 
     List<City> cities = cityMapper.selectList();
+
+    cityMapper.update();
     System.out.println(cities);
   }
 }

@@ -28,6 +28,8 @@ import org.apache.ibatis.session.SqlSession;
 /**
  * @author Clinton Begin
  * @author Eduardo Macarron
+ *
+ * 利用JDK动态代理，执行
  */
 public class MapperProxy<T> implements InvocationHandler, Serializable {
 
@@ -42,8 +44,20 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     this.methodCache = methodCache;
   }
 
+  /**
+   * 这里会执行被代理对象的具体方法， mapperInterface， 就是被代理的对象
+   * @param proxy
+   * @param method
+   * @param args
+   * @return
+   * @throws Throwable
+   *
+   * 只有调用mapper里的方法
+   */
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    System.out.println("我来看看啊，是不是会来执行我啊，，，，");
+
     try {
       if (Object.class.equals(method.getDeclaringClass())) {
         return method.invoke(this, args);

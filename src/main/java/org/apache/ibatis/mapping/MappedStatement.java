@@ -30,6 +30,10 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * @author Clinton Begin
+ *
+ * 一个mapped statement实例，代表一个具体的sql方法，比如mapper里的listCities()
+ *
+ * 这里的属性包含sql语句，参数等内容
  */
 public final class MappedStatement {
 

@@ -30,10 +30,16 @@ import org.apache.ibatis.session.SqlSession;
  * @author Clinton Begin
  * @author Eduardo Macarron
  * @author Lasse Voss
+ *
+ * mapper 注册中心
  */
 public class MapperRegistry {
 
   private final Configuration config;
+
+  /**
+   * 存放具体的mapper类，K为mapper的类（不是实例，是类）， V为Mapper代理工厂实例（这里是实例，一个具体的对象），真正执行sql的，就是这个代理工厂代理出来的实例
+   */
   private final Map<Class<?>, MapperProxyFactory<?>> knownMappers = new HashMap<>();
 
   public MapperRegistry(Configuration config) {

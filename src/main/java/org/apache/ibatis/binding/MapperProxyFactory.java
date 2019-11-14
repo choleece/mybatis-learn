@@ -27,7 +27,11 @@ import org.apache.ibatis.session.SqlSession;
  */
 public class MapperProxyFactory<T> {
 
+  /**
+   * mapperInterface为被代理对象
+   */
   private final Class<T> mapperInterface;
+
   private final Map<Method, MapperMethod> methodCache = new ConcurrentHashMap<>();
 
   public MapperProxyFactory(Class<T> mapperInterface) {
@@ -42,6 +46,15 @@ public class MapperProxyFactory<T> {
     return methodCache;
   }
 
+  /**
+   * 该方法用于为指定类装载器、一组接口及调用处理器生成动态代理类实例
+   * 第一个参数指定产生代理对象的类加载器，需要将其指定为和目标对象同一个类加载器
+   * 第二个参数要实现和目标对象一样的接口，所以只需要拿到目标对象的实现接口
+   * 第三个参数表明这些被拦截的方法在被拦截时需要执行哪个InvocationHandler的invoke方法
+   * 根据传入的目标返回一个代理对象
+   *
+   * 所以当调用mapperInterface的方法时，会执行mapperProxy里的invoke方法
+   */
   @SuppressWarnings("unchecked")
   protected T newInstance(MapperProxy<T> mapperProxy) {
     return (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(), new Class[] { mapperInterface }, mapperProxy);

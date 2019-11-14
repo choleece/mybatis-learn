@@ -69,7 +69,7 @@
   <!--  mybatis 映射器 https://mybatis.org/mybatis-3/zh/configuration.html#objectFactory -->
   <mappers>
     <mapper resource="cn/choleece/orm/mybatis/session/CityMapper.xml"/>
-    <mapper class="cn.choleece.orm.mybatis.session.CityMapper"/>
-    <package name="cn.choleece.orm.mybatis.session.mapper"/>
+<!--    <mapper class="cn.choleece.orm.mybatis.session.CityMapper"/>-->
+<!--    <package name="cn.choleece.orm.mybatis.session.mapper"/>-->
   </mappers>
 </configuration>
