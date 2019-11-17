@@ -39,6 +39,7 @@ public final class MappedStatement {
 
   private String resource;
   private Configuration configuration;
+  // 此处的ID为mapper的方法的全限定名，如cn.choleece.orm.mybatis.session.CityMapper.selectList
   private String id;
   private Integer fetchSize;
   private Integer timeout;
