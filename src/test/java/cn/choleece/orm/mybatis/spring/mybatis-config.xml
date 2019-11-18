@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+       Copyright 2009-2019 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+  <!--  属性配置 -->
+  <properties>
+    <property name="username" value="choleece"/>
+  </properties>
+
+  <!--  mybatis configuration里的配置参数，在这里都可以一一配置 https://mybatis.org/mybatis-3/zh/configuration.html#settings -->
+  <settings>
+    <setting name="cacheEnabled" value="true"/>
+  </settings>
+
+  <!--  mybatis 别名  https://mybatis.org/mybatis-3/zh/configuration.html#typeAliases-->
+  <typeAliases>
+    <typeAlias alias="city" type="cn.choleece.orm.mybatis.session.City"/>
+    <package name="cn.choleece.orm.mybatis.session"/>
+  </typeAliases>
+
+  <!--  mybatis 类型处理器 也是有两种类型 默认的有一些，也可以自定义处理返回结果，需要继承BaseTypeHandler<Type> https://mybatis.org/mybatis-3/zh/configuration.html#typeHandlers -->
+  <typeHandlers>
+    <typeHandler handler="cn.choleece.orm.mybatis.session.handler.ExampleTypeHandler"/>
+    <package name="cn.choleece.orm.mybatis.session.handler"/>
+  </typeHandlers>
+
+  <!--  mybatis 用于实例化对象  https://mybatis.org/mybatis-3/zh/configuration.html#objectFactory  -->
+  <objectFactory type="cn.choleece.orm.mybatis.session.factory.ExampleObjectFactory">
+    <property name="someProperty" value="100"/>
+  </objectFactory>
+
+  <plugins>
+    <plugin interceptor="cn.choleece.orm.mybatis.session.plugin.ExamplePlugin">
+      <property name="someProperty" value="100"/>
+    </plugin>
+  </plugins>
+
+  <!--  mybatis 映射器 https://mybatis.org/mybatis-3/zh/configuration.html#objectFactory -->
+  <mappers>
+    <mapper resource="cn/choleece/orm/mybatis/session/CityMapper.xml"/>
+  </mappers>
+</configuration>
